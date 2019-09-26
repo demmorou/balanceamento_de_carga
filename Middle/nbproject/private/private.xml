@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/home/junior/Documentos/projetos_sd/balanceamento_de_carga/Middle/src/middle/Clients.java</file>
+            <file>file:/home/junior/Documentos/projetos_sd/balanceamento_de_carga/Middle/src/middle/ServerRest.java</file>
+            <file>file:/home/junior/Documentos/projetos_sd/balanceamento_de_carga/Middle/src/middle/Server.java</file>
+            <file>file:/home/junior/Documentos/projetos_sd/balanceamento_de_carga/Middle/src/middle/Middle.java</file>
+        </group>
+>>>>>>> cc6ad26f033862ddbafdbf593846f6a0c8a46dd4
     </open-files>
 </project-private>
