@@ -14,8 +14,8 @@ import java.net.Socket;
 import java.util.Arrays;
 
 public class Conexao extends AsyncTask <String, Integer, String> {
-    private static final String hostname = "192.168.43.8";
-    private static final int portaServidor = 8000;
+    private static final String hostname = "192.168.43.85";
+    private static final int portaServidor = 12345;
     private IAsyncHandler mHandler;
     private static byte[] byteArray;
 
@@ -24,26 +24,22 @@ public class Conexao extends AsyncTask <String, Integer, String> {
         this.mHandler = mHandler;
     }
 
-    public void setByteArray(byte[] b){
-        byteArray = b;
-    }
+//    public void setByteArray(byte[] b){
+//        byteArray = b;
+//    }
 
     @Override
     protected String doInBackground(String... params) {
         try {
 
             Socket socket = new Socket(hostname, portaServidor);
-//            //Dados enviados para o servidor
-//            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-//
-//            //Arrays.toString(), pegar todas as strings que passar no método.
-//            bw.write(Arrays.toString(params));
-//            bw.newLine();
-//            bw.flush();
+            //Dados enviados para o servidor
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
-//            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-            DataOutputStream oos = new DataOutputStream(socket.getOutputStream());
-            oos.flush();
+            //Arrays.toString(), pegar todas as strings que passar no método.
+            bw.write(Arrays.toString(params));
+            bw.newLine();
+            bw.flush();
 
             //Dados recebidos pelo servidor
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
