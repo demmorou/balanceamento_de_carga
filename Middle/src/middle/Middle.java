@@ -27,7 +27,7 @@ public class Middle {
     public static void main(String[] args) throws InterruptedException{
         // TODO code application logic here
         
-        servers.add(new ServerRest("localhost:8080"));
+        servers.add(new ServerRest("localhost:12345"));
 //        servers.add(new ServerRest("localhost:8081"));
 
         while (true) {

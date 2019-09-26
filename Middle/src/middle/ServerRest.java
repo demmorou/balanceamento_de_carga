@@ -65,6 +65,31 @@ public class ServerRest {
         }
     }
     
+    public String rotacionar(String coder) {
+        try {
+            System.out.println("Testando conexão "+this.IPPort);
+            String URL_MEDIA = "http://"+this.IPPort+"/DetectFace/webresources/generic/Rotacionar"+coder;
+            long start = System.currentTimeMillis();
+            URL obj = new URL(URL_MEDIA);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("GET");
+//            int responseCode = con.getResponseCode();
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            return response.toString();
+        } catch (Exception e) {
+            return coder;
+        }
+    }
+    
     public String toString() {
         return "Host: "+this.IPPort+", Score: "+this.score+" {Ping: "+this.ping+", Latencia: "+this.latencia+", CPU: "+this.cpuUse+"}\n";
     }
@@ -100,6 +125,5 @@ public class ServerRest {
     public void setScore(String score) {
         this.score = score;
     }
-    
     
 }

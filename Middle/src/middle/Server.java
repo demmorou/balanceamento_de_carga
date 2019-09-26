@@ -5,8 +5,17 @@
  */
 package middle;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -14,15 +23,16 @@ import java.net.Socket;
  */
 public class Server {
     public static void main(String[] args) {
+            
         try {
             ServerSocket servidor = new ServerSocket(12345);
             System.out.println("Servidor ativo");
             while (true) {                
                 Socket cliente = servidor.accept();
-                Clients c = new Clients(cliente);
+//                Clients c = new Clients(cliente);
                 
-                Thread t = new Thread(c);
-                t.start();
+//                Thread t = new Thread(c);
+//                t.start();
             }
         } catch (Exception e) {
             System.err.println("error");
