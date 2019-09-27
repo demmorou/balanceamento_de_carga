@@ -9,7 +9,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import static middle.Middle.melhorServer;
+//import static middle.Middle.melhorServer;
 
 /**
  *
@@ -19,29 +19,40 @@ public class ServerMiddle {
     private static List<ServerRest> servers = new ArrayList<>();
     private static ServerRest melhor;
     
+    
     public static void main(String[] args) {
+//        servers.add(new ServerRest("192.168.43.134:8080"));
+        servers.add(new ServerRest("192.168.43.85:8080"));
+        
+//        for (ServerRest server : servers) {
+//            server.Teste();
+//            System.out.println(server);
+//        }
+//
+//        melhorServer();
+//        System.out.println(melhor);
+//        
+        Thread consultas = new Thread (() -> {
+            while (true) {
+            for (ServerRest server : servers) {
+                server.Teste();
+//                System.out.println(server);
+            }
+
+            melhorServer();
+            System.out.println("Melhor server: "+melhor);
+//                System.out.println(servers);
+                try {
+                    Thread.sleep(5000);
+                } catch (Exception e) {
+                }
+            }
+        });
+
+        consultas.start();
         try {
             ServerSocket servidor = new ServerSocket(12345);
             System.out.println("Servidor ativo");
-            
-            servers.add(new ServerRest("localhost:12345"));
-            
-            Thread consultas = new Thread (() -> {
-                while (true) {
-                for (ServerRest server : servers) {
-                    server.Teste();
-                }
-
-                melhorServer();
-                System.out.println("Melhor server: "+melhor);
-                    try {
-                        Thread.sleep(5000);
-                    } catch (Exception e) {
-                    }
-                }
-            });
-            
-            consultas.start();
             
             while (true) {                
                 Socket cliente = servidor.accept();

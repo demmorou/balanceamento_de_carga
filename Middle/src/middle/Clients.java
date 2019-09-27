@@ -54,31 +54,15 @@ public class Clients implements Runnable {
             String output = br.readLine();
             
             //
-            output = output.replace("[", "");
-            output = output.replace("]", "");
+            System.out.println("-------------------- Recebendo do celular --------------------");
             System.out.println(output);
-            
-            FileOutputStream imageOutFile = new FileOutputStream("../imagem.png");
-            
-            byte[] imageByteArray = Base64.getDecoder().decode(output);
-            
-            imageOutFile.write(imageByteArray);
-            Image picture = ImageIO.read(new File("../imagem.png"));
-            BufferedImage ppp = (BufferedImage) picture;
-            BufferedImage newImage = new BufferedImage( picture.getHeight(null), picture.getWidth(null), ppp.getType() );;
-            for( int i=0 ; i < picture.getWidth(null); i++ )
-                for( int j=0 ; j < picture.getHeight(null); j++ )
-                    newImage.setRGB( picture.getHeight(null)-1-j, i, ppp.getRGB(i,j));
-            FileOutputStream saida = new FileOutputStream("../imagem_rodada.png");
-            
-            
-            ImageIO.write(newImage, "png", saida);
-            
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(newImage, "png", baos);
-            String encoded = Base64.getEncoder().encodeToString(baos.toByteArray());
-            System.out.println(encoded);
+            String encoded = servidor.rotacionar(output);
+            System.out.println("----------------------------------------------");
             //
+            
+            System.out.println("---------------------- Enviando para o celular --------------------");
+            System.out.println(encoded);
+            System.out.println("-----------------------------------------------------------------");
             
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(cliente.getOutputStream()));
             bw.write(encoded);
